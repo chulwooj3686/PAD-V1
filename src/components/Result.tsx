@@ -169,7 +169,7 @@ export default function Result({ answers, userInfo, onRestart }: ResultProps) {
             원점수(5점 만점) · 백분위(%) 통합 분석표
           </p>
           <p className="text-indigo-200/90 text-xs mt-1 relative z-10 font-mono">
-            ※ CARAT 핵심성격모형 기준 백분위(1% ~ 99%) 환산 분석
+            ※ CARAT 핵심성격모형 기준 원점수(1.0~5.0) → 백분위(0.10% ~ 99.90%) 공식 변환표 적용
           </p>
           {userInfo && (
             <div className="mt-4 inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs sm:text-sm text-indigo-100">
@@ -221,7 +221,7 @@ export default function Result({ answers, userInfo, onRestart }: ResultProps) {
                     formatter={(value: any, name: string, props: any) => {
                       const p = props.payload;
                       return [
-                        `원점수: ${p.raw.toFixed(1)}점 | 백분위: ${p.percentile.toFixed(1)}%`,
+                        `원점수: ${p.raw.toFixed(1)}점 | 백분위: ${p.percentile.toFixed(2)}%`,
                         p.subject
                       ];
                     }}
@@ -302,7 +302,7 @@ export default function Result({ answers, userInfo, onRestart }: ResultProps) {
                         {s.raw.toFixed(1)} <span className="text-xs text-gray-400 font-normal">/ 5.0</span>
                       </td>
                       <td className="py-3 px-4 text-center font-bold text-indigo-600 bg-indigo-50/30">
-                        {s.percentile.toFixed(1)} <span className="text-xs text-indigo-400 font-normal">%</span>
+                        {s.percentile.toFixed(2)} <span className="text-xs text-indigo-400 font-normal">%</span>
                       </td>
                       <td className="py-3 px-4">
                         <div className="w-28 bg-gray-200 h-2.5 rounded-full overflow-hidden mx-auto">
@@ -344,7 +344,7 @@ export default function Result({ answers, userInfo, onRestart }: ResultProps) {
                     </div>
                     <div className="border-l border-gray-100">
                       <div className="text-[11px] text-indigo-500 font-medium">백분위</div>
-                      <div className="text-sm font-bold text-indigo-600">{s.percentile.toFixed(1)}%</div>
+                      <div className="text-sm font-bold text-indigo-600">{s.percentile.toFixed(2)}%</div>
                     </div>
                   </div>
 
